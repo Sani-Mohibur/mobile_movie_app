@@ -18,6 +18,10 @@ module.exports = {
           200: "#0F0D23",
         },
         accent: "#AB8BFF",
+
+        "light-mode-bg": "#f3f4f6", // Background in light mode
+        "dark-mode-text": "#1f2937", // Text color in light mode
+        "light-mode-card": "#ffffff",
       },
     },
   },

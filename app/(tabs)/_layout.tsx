@@ -1,10 +1,24 @@
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
 import { Tabs } from "expo-router";
+import { useColorScheme } from "nativewind";
 import React from "react";
 import { Image, ImageBackground, Text, View } from "react-native";
 
-const TabIcon = ({ focused, icon, title }: any) => {
+interface TabIconProps {
+  focused: boolean;
+  icon: any;
+  title: string;
+}
+
+const TabIcon = ({ focused, icon, title }: TabIconProps) => {
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === "dark";
+
+  const focusedIconColor = isDark ? "#151312" : "#ffffff";
+  const focusedTextColor = isDark ? "text-secondary" : "text-white";
+  const unfocusedIconColor = isDark ? "#A8B5DB" : "#71717A";
+
   if (focused) {
     return (
       <ImageBackground
@@ -12,8 +26,8 @@ const TabIcon = ({ focused, icon, title }: any) => {
         className="flex flex-row w-full flex-1 min-w-[112px] min-h-16 
                 mt-4 justify-center items-center rounded-full overflow-hidden"
       >
-        <Image source={icon} tintColor="#151312" className="size-5" />
-        <Text className="text-secondary text-base font-semibold ml-2">
+        <Image source={icon} tintColor={focusedIconColor} className="size-5" />
+        <Text className={`${focusedTextColor} text-base font-semibold ml-2`}>
           {title}
         </Text>
       </ImageBackground>
@@ -21,15 +35,25 @@ const TabIcon = ({ focused, icon, title }: any) => {
   }
   return (
     <View className="size-full justify-center items-center mt-4 rounded-full">
-      <Image source={icon} tintColor="#A8B5DB" className="size-5" />
+      <Image source={icon} tintColor={unfocusedIconColor} className="size-5" />
     </View>
   );
 };
 
 const _layout = () => {
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === "dark";
+
+  // 🔑 Define Theme-Based Colors for the BAR STYLE
+  const barBgColor = isDark ? "#0f0d23" : "#ffffff";
+  const barBorderColor = isDark ? "#0f0d23" : "#e0e0e0";
+  const activeColor = isDark ? "#AB8BFF" : "#4f46e5";
+  const inactiveColor = isDark ? "#A8B5DB" : "#71717A";
   return (
     <Tabs
       screenOptions={{
+        tabBarActiveTintColor: activeColor, // Use dynamic color
+        tabBarInactiveTintColor: inactiveColor, // Use dynamic color
         tabBarShowLabel: false,
         tabBarItemStyle: {
           width: "100%",
@@ -38,7 +62,8 @@ const _layout = () => {
           alignItems: "center",
         },
         tabBarStyle: {
-          backgroundColor: "#0f0d23",
+          backgroundColor: barBgColor,
+          borderColor: barBorderColor,
           borderRadius: 50,
           marginHorizontal: 20,
           marginBottom: 36,
@@ -46,7 +71,6 @@ const _layout = () => {
           position: "absolute",
           overflow: "hidden",
           borderWidth: 1,
-          borderColor: "#0f0d23",
         },
       }}
     >

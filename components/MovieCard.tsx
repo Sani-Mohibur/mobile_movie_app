@@ -1,5 +1,6 @@
 import { icons } from "@/constants/icons";
 import { Link } from "expo-router";
+import { useColorScheme } from "nativewind";
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
@@ -10,6 +11,9 @@ const MovieCard = ({
   vote_average,
   release_date,
 }: Movie) => {
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === "dark";
+  const titleTextClass = isDark ? "text-white" : "text-dark-mode-text";
   return (
     <Link href={`/movies/${id}`} asChild>
       <TouchableOpacity className="w-[30%]">
@@ -22,7 +26,10 @@ const MovieCard = ({
           className="w-full h-52 rounded-lg"
           resizeMode="cover"
         />
-        <Text className="text-sm font-bold text-white mt-2" numberOfLines={1}>
+        <Text
+          className={`text-sm font-bold ${titleTextClass} mt-2`}
+          numberOfLines={1}
+        >
           {title}
         </Text>
 
@@ -43,12 +50,18 @@ const MovieCard = ({
                 source={icons.star}
                 className="size-3.5"
                 resizeMode="contain"
+                tintColor={isDark ? "#F5C518" : "#f5c518"}
               />
             )
           )}
         </View>
+
         <View className="flex-row items-center justify-between">
-          <Text className="text-xs text-light-300 font-medium mt-1">
+          <Text
+            className={`text-xs ${
+              isDark ? "text-light-300" : "text-gray-600"
+            } font-medium mt-1`}
+          >
             {release_date?.split("-")[0]}
           </Text>
           {/* <Text className="text-xs font-medium text-light-300 uppercase">

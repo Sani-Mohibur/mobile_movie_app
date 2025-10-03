@@ -2,35 +2,39 @@ import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
-import { fetchMovies } from "@/services/api";
 import useFetch from "@/services/useFetch";
+import { useColorScheme } from "nativewind";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const { colorScheme } = useColorScheme();
+
+  const isDark = colorScheme === "dark";
+  const bgClass = isDark ? "bg-primary" : "bg-light-mode-bg";
+  const textClass = isDark ? "text-light-100" : "text-dark-mode-text";
 
   const {
     data: movies,
     loading,
     error,
-    refetch: loadMovies,
-    reset,
-  } = useFetch(() => fetchMovies({ query: searchQuery }), false);
+    setQuery,
+  } = useFetch<Movie>(searchQuery);
 
   useEffect(() => {
-    const timeoutId = setTimeout(async () => {
-      if (searchQuery.trim()) {
-        await loadMovies();
+    const timeoutId = setTimeout(() => {
+      if (searchQuery.trim().length > 0) {
+        setQuery(searchQuery);
       } else {
-        reset();
+        setQuery("");
       }
     }, 500);
     return () => clearTimeout(timeoutId);
   }, [searchQuery]);
 
   return (
-    <View className="flex-1 bg-primary">
+    <View className={`flex-1 ${bgClass}`}>
       <Image
         source={images.bg}
         className="flex-1 absolute w-full z-0"
@@ -74,7 +78,7 @@ const Search = () => {
               </Text>
             )}
             {!loading && !error && searchQuery.trim() && movies?.length > 0 && (
-              <Text className="text-xl text-white font-bold">
+              <Text className={`text-xl ${textClass} font-bold`}>
                 Search Results for{" "}
                 <Text className="text-accent">{searchQuery}</Text>
               </Text>
@@ -84,7 +88,7 @@ const Search = () => {
         ListEmptyComponent={
           !loading && !error ? (
             <View className="mt-10 px-5">
-              <Text className="text-center text-gray-500">
+              <Text className={`text-center ${textClass} opacity-50`}>
                 {searchQuery.trim() ? "No movies found" : "Search for a movie"}
               </Text>
             </View>
