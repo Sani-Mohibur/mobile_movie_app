@@ -1,50 +1,105 @@
-# Welcome to your Expo app 👋
+# Movie Flex 🍿🎬
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Project Overview
 
-## Get started
+**Movie Flex** is a fully functional, theme-aware mobile application built on the Expo/React Native framework. It allows users to discover trending movies, search the entire catalog, and view detailed information, featuring a modern, dark-first UI optimized for performance and user experience.
 
-1. Install dependencies
+| Feature | Status |
+| :--- | :--- |
+| **Movie Discovery (Home)** | Complete (Infinite Scroll) |
+| **Search Functionality** | Complete (Debounced & Paginated) |
+| **Movie Details Page** | Complete (Data Formatting & Navigation) |
+| **Theming** | Complete (Full Light/Dark Mode Toggle) |
+| **App Structure** | Complete (Tab Navigation) |
 
-   ```bash
-   npm install
-   ```
+## App Showcase
 
-2. Start the app
+| Home Screen (Dark) | Profile Screen (Light) |
+| :---: | :---: |
+| ![Home Page Screenshot](https://raw.githubusercontent.com/Sani-Mohibur/mobile_movie_app/main/assets/screenshots/home-dark.png) | ![Profile Page Screenshot](https://raw.githubusercontent.com/Sani-Mohibur/mobile_movie_app/main/assets/screenshots/profile-light.png) |
 
-   ```bash
-   npx expo start
-   ```
+## Tech Stack
 
-In the output, you'll find options to open the app in a
+This project leverages the modern Expo ecosystem for cross-platform development:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+* **Framework:** React Native
+* **Platform:** Expo SDK (Managed Workflow)
+* **Navigation:** Expo Router (File-System Routing)
+* **Styling:** NativeWind (Tailwind CSS for React Native)
+* **Data Source:** The Movie Database (TMDb) API (V3/V4 Authorization)
+* **Tools:** EAS Build (for generating standalone APK/AAB files)
+* **Language:** TypeScript
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Setup and Installation
 
-## Get a fresh project
+### Prerequisites
 
-When you're ready, run:
+* Node.js (LTS version)
+* Expo CLI (`npm install -g expo-cli`)
+* EAS CLI (`npm install -g eas-cli`)
+* A TMDb API Key (stored in your local `.env` file).
 
-```bash
-npm run reset-project
-```
+### Local Development
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+1.  **Clone the Repository:**
+    ```bash
+    git clone [https://github.com/Sani-Mohibur/mobile_movie_app.git](https://github.com/Sani-Mohibur/mobile_movie_app.git)
+    cd mobile_movie_app
+    ```
 
-## Learn more
+2.  **Install Dependencies:**
+    ```bash
+    npm install
+    ```
 
-To learn more about developing your project with Expo, look at the following resources:
+3.  **Configure Environment:**
+    * Create a file named `.env` in the project root.
+    * Add your TMDb API Key:
+        ```
+        EXPO_PUBLIC_MOVIE_API_KEY="YOUR_TMDb_API_KEY"
+        ```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+4.  **Run the App:**
+    ```bash
+    npx expo start
+    ```
+    Scan the QR code with the Expo Go app on your phone.
 
-## Join the community
+## Key Features
 
-Join our community of developers creating universal apps.
+* **Infinite Scrolling:** Movies are loaded dynamically on the Home screen as the user scrolls to the bottom.
+* **Debounced Search:** Search queries are delayed by 500ms to prevent excessive API calls, improving efficiency.
+* **Adaptive Theming:** Supports both Dark and Light mode, controlled via the toggle switch on the Settings page, and respects system preferences.
+* **Detailed Views:** Displays formatted movie information, including revenue in millions and star rating based on TMDb vote averages.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Acknowledgments & Data Source
+
+This project would not have been possible without the following resources:
+
+* **Data Source:** Data is powered by [The Movie Database (TMDb)](https://www.themoviedb.org/).
+    * *This product uses the TMDb API but is not endorsed or certified by TMDb.*
+* **Guidance & Assets:** Project guidance and initial UI assets sourced from [JavaScript Mastery](https://www.jsmastery.pro/).
+
+## Build and Distribution (EAS)
+
+To generate a standalone `.apk` or `.aab` file:
+
+1.  Log in and configure EAS (if not done already):
+    ```bash
+    eas login
+    eas build:configure
+    ```
+2.  Start the **Preview Build** (recommended for testing/sharing):
+    ```bash
+    eas build -p android --profile preview
+    ```
+    A shareable URL will be provided to download the self-contained `.apk` file.
+
+***
+
+### Installation Link (Android APK)
+
+**Direct Download Link (Self-Contained APK):**
+[Download Movie Flex APK](https://expo.dev/accounts/farabisunny/projects/mobile_movie_app/builds/eccb7a5f-24cb-4473-9b50-907d37e6aa4c)
+
+**Developer:** Mohibur Rahman Sani
