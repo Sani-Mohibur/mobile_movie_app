@@ -16,7 +16,7 @@
 
 | Home Screen (Dark) | Movie Details (Dark) | Profile Screen (Light) |
 | :---: | :---: | :---: |
-| ![Home Screen Screenshot](https://raw.githubusercontent.com/Sani-Mohibur/mobile_movie_app/main/screenshots/home-dark.png) | ![Movie Details Screenshot](https://raw.githubusercontent.com/Sani-Mohibur/mobile_movie_app/main/screenshots/details-dark.png) | ![Profile Screen Screenshot](https://raw.githubusercontent.com/Sani-Mohibur/mobile_movie_app/main/screenshots/profile-light.png) |
+| ![Home Screen Screenshot](https://raw.githubusercontent.com/Sani-Mohibur/mobile_movie_app/master/assets/screenshots/home-dark.png) | ![Movie Details Screenshot](https://raw.githubusercontent.com/Sani-Mohibur/mobile_movie_app/master/assets/screenshots/details-dark.png) | ![Profile Screen Screenshot](https://raw.githubusercontent.com/Sani-Mohibur/mobile_movie_app/master/assets/screenshots/profile-light.png) |
 
 ## Tech Stack
 
