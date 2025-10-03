@@ -14,9 +14,9 @@
 
 ## App Showcase
 
-| Home Screen (Dark) | Profile Screen (Light) |
-| :---: | :---: |
-| ![Home Page Screenshot](https://raw.githubusercontent.com/Sani-Mohibur/mobile_movie_app/main/assets/screenshots/home-dark.png) | ![Profile Page Screenshot](https://raw.githubusercontent.com/Sani-Mohibur/mobile_movie_app/main/assets/screenshots/profile-light.png) |
+| Home Screen (Dark) | Movie Details (Dark) | Profile Screen (Light) |
+| :---: | :---: | :---: |
+| ![Home Screen Screenshot](https://raw.githubusercontent.com/Sani-Mohibur/mobile_movie_app/main/screenshots/home-dark.png) | ![Movie Details Screenshot](https://raw.githubusercontent.com/Sani-Mohibur/mobile_movie_app/main/screenshots/details-dark.png) | ![Profile Screen Screenshot](https://raw.githubusercontent.com/Sani-Mohibur/mobile_movie_app/main/screenshots/profile-light.png) |
 
 ## Tech Stack
 
