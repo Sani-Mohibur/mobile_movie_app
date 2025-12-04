@@ -49,7 +49,7 @@ Use these badges to visually showcase your project's technology:
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/Sani-Mohibur/mobile_movie_app.git](https://github.com/Sani-Mohibur/mobile_movie_app.git)
+    git clone https://github.com/Sani-Mohibur/mobile_movie_app.git
     cd mobile_movie_app
     ```
 
